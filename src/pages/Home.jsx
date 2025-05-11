@@ -17,7 +17,7 @@ const Home = () => {
             alt="Zanzibar Beach"
             className="w-full h-full object-cover opacity-40"
             onError={(e) => {
-              e.target.src = "https://images.unsplash.com/photo-1535338454770-8be927b5a00a";
+              e.target.src = "/src/assets/images/zanzibar-hero.jpg";
               e.target.className = "w-full h-full object-cover opacity-40";
             }}
           />
