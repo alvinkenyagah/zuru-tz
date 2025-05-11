@@ -1,16 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Home, Map, Info, Phone, Compass } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('nav')) {
+        setIsMenuOpen(false);
+      }
+    };
+    
+    // Close menu when route changes
+    const handleRouteChange = () => {
+      setIsMenuOpen(false);
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('resize', handleRouteChange);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('resize', handleRouteChange);
+    };
+  }, [isMenuOpen, location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    if (isMenuOpen) setIsMenuOpen(false);
   };
 
   const isActive = (path) => {
@@ -18,34 +37,34 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-white shadow-md sticky top-0 z-50" aria-label="Main Navigation">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center" onClick={closeMenu}>
-              <img 
-                className="h-10 w-auto" 
-                src="/src/assets/images/logo.png" 
-                alt="Tanzania Organized Zanzibar Tours" 
-              />
-              <span className="ml-2 text-xl font-bold text-blue-600">TOZ Tours</span>
+            <Link to="/" className="flex-shrink-0 flex items-center" aria-label="Go to homepage">
+              <Compass className="h-8 w-8 text-blue-600" />
+              <span className="ml-2 text-xl font-bold text-blue-600">Zuru-TZ</span>
             </Link>
           </div>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center">
             <div className="ml-10 flex items-baseline space-x-6">
-              <Link to="/" className={`px-3 py-2 font-medium ${isActive('/')}`}>
-                Home
+              <Link to="/" className={`px-3 py-2 font-medium transition-colors duration-200 flex items-center gap-2 ${isActive('/')}`}>
+                <Home size={18} />
+                <span>Home</span>
               </Link>
-              <Link to="/tours" className={`px-3 py-2 font-medium ${isActive('/tours')}`}>
-                Tours
+              <Link to="/tours" className={`px-3 py-2 font-medium transition-colors duration-200 flex items-center gap-2 ${isActive('/tours')}`}>
+                <Map size={18} />
+                <span>Tours</span>
               </Link>
-              <Link to="/about" className={`px-3 py-2 font-medium ${isActive('/about')}`}>
-                About Us
+              <Link to="/about" className={`px-3 py-2 font-medium transition-colors duration-200 flex items-center gap-2 ${isActive('/about')}`}>
+                <Info size={18} />
+                <span>About Us</span>
               </Link>
-              <Link to="/contact" className={`px-3 py-2 font-medium ${isActive('/contact')}`}>
-                Contact
+              <Link to="/contact" className={`px-3 py-2 font-medium transition-colors duration-200 flex items-center gap-2 ${isActive('/contact')}`}>
+                <Phone size={18} />
+                <span>Contact</span>
               </Link>
             </div>
           </div>
@@ -56,65 +75,80 @@ const Navbar = () => {
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-blue-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
               aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={isMenuOpen ? 'Close main menu' : 'Open main menu'}
             >
-              <span className="sr-only">Open main menu</span>
-              {/* Menu open: "hidden", Menu closed: "block" */}
-              <svg
-                className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              {/* Menu open: "block", Menu closed: "hidden" */}
-              <svg
-                className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <span className="sr-only">{isMenuOpen ? 'Close main menu' : 'Open main menu'}</span>
+              <div className="relative w-6 h-6">
+                {/* Hamburger to X animation */}
+                <span 
+                  className={`absolute h-0.5 w-6 bg-gray-600 transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'
+                  }`} 
+                />
+                <span 
+                  className={`absolute h-0.5 w-6 bg-gray-600 transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'opacity-0' : 'opacity-100'
+                  }`} 
+                />
+                <span 
+                  className={`absolute h-0.5 w-6 bg-gray-600 transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'
+                  }`} 
+                />
+              </div>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on menu state */}
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {/* Mobile menu, with smooth transition */}
+      <div 
+        id="mobile-menu"
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-inner">
           <Link
             to="/"
-            className={`block px-3 py-2 rounded-md font-medium ${isActive('/') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'}`}
-            onClick={closeMenu}
+            className={`flex items-center gap-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+              isActive('/') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'
+            }`}
+            aria-current={location.pathname === '/' ? 'page' : undefined}
           >
-            Home
+            <Home size={20} />
+            <span>Home</span>
           </Link>
           <Link
             to="/tours"
-            className={`block px-3 py-2 rounded-md font-medium ${isActive('/tours') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'}`}
-            onClick={closeMenu}
+            className={`flex items-center gap-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+              isActive('/tours') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'
+            }`}
+            aria-current={location.pathname === '/tours' ? 'page' : undefined}
           >
-            Tours
+            <Map size={20} />
+            <span>Tours</span>
           </Link>
           <Link
             to="/about"
-            className={`block px-3 py-2 rounded-md font-medium ${isActive('/about') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'}`}
-            onClick={closeMenu}
+            className={`flex items-center gap-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+              isActive('/about') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'
+            }`}
+            aria-current={location.pathname === '/about' ? 'page' : undefined}
           >
-            About Us
+            <Info size={20} />
+            <span>About Us</span>
           </Link>
           <Link
             to="/contact"
-            className={`block px-3 py-2 rounded-md font-medium ${isActive('/contact') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'}`}
-            onClick={closeMenu}
+            className={`flex items-center gap-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+              isActive('/contact') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'
+            }`}
+            aria-current={location.pathname === '/contact' ? 'page' : undefined}
           >
-            Contact
+            <Phone size={20} />
+            <span>Contact</span>
           </Link>
         </div>
       </div>
