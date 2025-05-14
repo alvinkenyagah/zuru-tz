@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useToursContext } from '../context/ToursContext';
 import TourCard from '../components/TourCard';
+import images from '../assets/images';
 
 const Home = () => {
   const { allTours } = useToursContext();
@@ -13,11 +14,11 @@ const Home = () => {
       <section className="relative bg-blue-900 text-white">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="/src/assets/images/zanzibar-hero.jpg" 
+            src={images.zanzibarHero} 
             alt="Zanzibar Beach"
             className="w-full h-full object-cover opacity-40"
             onError={(e) => {
-              e.target.src = "/src/assets/images/zanzibar-hero.jpg";
+              e.target.src = images.zanzibarHero;
               e.target.className = "w-full h-full object-cover opacity-40";
             }}
           />
