@@ -5,8 +5,8 @@ import Home from "./pages/Home";
 import Tours from "./pages/Tours";
 import './App.css'
 import TourDetail from "./pages/TourDetail";
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
+import AboutUsPage from "./pages/About";
+import ContactPage from "./pages/Contact";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { ToursProvider } from "./context/ToursContext";
 
@@ -21,8 +21,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/tours" element={<Tours />} />
               <Route path="/tours/:id" element={<TourDetail />} />
-              {/* <Route path="/about" element={<About />} /> */}
-              {/* <Route path="/contact" element={<Contact />} /> */}
+              <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </main>
           <Footer />
