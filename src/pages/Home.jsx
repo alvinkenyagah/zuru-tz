@@ -13,7 +13,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative bg-blue-900 text-white">
         <div className="absolute inset-0 overflow-hidden">
-          <img
+          {/* <img
             src={images.zanzibarHero} 
             alt="Zanzibar Beach"
             className="w-full h-full object-cover opacity-40"
@@ -21,7 +21,9 @@ const Home = () => {
               e.target.src = images.zanzibarHero;
               e.target.className = "w-full h-full object-cover opacity-40";
             }}
-          />
+          /> */}
+          <img className="w-full h-full object-cover opacity-40" src={images.zanzibarHero} alt="Zanzibar Beach" />
+
         </div>
         <div className="container mx-auto px-4 py-24 relative z-10">
           <div className="max-w-3xl">
