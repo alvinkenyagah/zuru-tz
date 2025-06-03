@@ -1,3 +1,5 @@
+import images from "../assets/images";
+
 export const tours = [
     {
       id: "skydiving-nungwi",
@@ -13,7 +15,7 @@ export const tours = [
         }
       },
       duration: "Half day",
-      image: "/src/assets/images/skydiving.jpg",
+      image: images.skydivingnungwi, 
       featured: true
     },
     {
@@ -32,7 +34,7 @@ export const tours = [
         { name: "Pelegic One HALF DAY", price: 650 },
         { name: "Pelegic One FULL DAY", price: 950 }
       ],
-      image: "/src/assets/images/deep-sea-fishing.jpg",
+      image: images.deepseafishingnungwi,
       note: "Prices are per boat (1 - 5 persons)"
     },
     {
@@ -49,7 +51,7 @@ export const tours = [
       ],
       pricing: "One Quad - $110 (1 person)/ One Quad $130 (2 persons)",
       duration: "3 hours",
-      image: "/src/assets/images/quad-adventure.jpg"
+      image: images.quadadventures
     },
     {
       id: "sunset-cruise",
@@ -66,7 +68,7 @@ export const tours = [
         }
       },
       duration: "2 hours",
-      image: "/src/assets/images/sunset-cruise.jpg",
+      image: images.sunsetcruise,
       featured: true
     },
     {
@@ -83,7 +85,7 @@ export const tours = [
         }
       },
       duration: "Half day",
-      image: "/src/assets/images/sea-turtles.jpg"
+      image: images.naturalaquarium,
     },
     {
       id: "mnemba-snorkeling",
@@ -102,7 +104,7 @@ export const tours = [
         }
       },
       duration: "Half day",
-      image: "/src/assets/images/mnemba-snorkeling.jpg"
+      image: images.mnembasnorkeling,
     },
     {
       id: "jozani-forest",
@@ -121,7 +123,7 @@ export const tours = [
         }
       },
       duration: "Half day",
-      image: "/src/assets/images/jozani-forest.jpg"
+      image: images.jozaniforest,
     },
     {
       id: "butterfly-center",
@@ -140,7 +142,7 @@ export const tours = [
         }
       },
       duration: "Half day",
-      image: "/src/assets/images/butterfly-center.jpg"
+      image: images.butterflycenter,
     },
     {
       id: "stone-town-tour",
@@ -158,7 +160,7 @@ export const tours = [
         group10plus: 25
       },
       duration: "3-4 hours",
-      image: "/src/assets/images/stone-town.jpg",
+      image: images.stonetowntour,
       featured: true
     },
     {
@@ -177,7 +179,7 @@ export const tours = [
         group10plus: 30
       },
       duration: "Half day",
-      image: "/src/assets/images/prison-island.jpg"
+      image: images.prisonisland
     },
     {
       id: "nakupenda-sandbank",
@@ -194,7 +196,7 @@ export const tours = [
         }
       },
       duration: "Full day",
-      image: "/src/assets/images/nakupenda.jpg",
+      image: images.nakupendasandbank,
       featured: true
     },
     {
@@ -215,7 +217,7 @@ export const tours = [
         group10plus: 20
       },
       duration: "Half day",
-      image: "/src/assets/images/spice-tour.jpg"
+      image: images.spicetour
     },
     {
       id: "safari-blue",
@@ -233,7 +235,7 @@ export const tours = [
         group10plus: 50
       },
       duration: "Full day",
-      image: "/src/assets/images/safari-blue.jpg",
+      image: images.safariblue,
       featured: true
     },
     {
@@ -252,7 +254,7 @@ export const tours = [
         group10plus: 35
       },
       duration: "Full day",
-      image: "/src/assets/images/sea-safari.jpg"
+      image: images.seasafarilocal
     },
     {
       id: "luxury-sea-safari",
@@ -270,7 +272,7 @@ export const tours = [
         group10plus: 70
       },
       duration: "Full day",
-      image: "/src/assets/images/luxury-safari.jpg"
+      image: images.luxuryseasafari
     }
   ];
   

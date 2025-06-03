@@ -5,6 +5,10 @@ import SearchFilter from '../components/SearchFilter';
 
 const Tours = () => {
   const { filteredTours, resetFilters } = useToursContext();
+
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   // Responsive viewport state
   const [isMobile, setIsMobile] = useState(false);

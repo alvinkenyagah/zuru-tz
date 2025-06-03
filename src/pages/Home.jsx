@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useToursContext } from '../context/ToursContext';
 import TourCard from '../components/TourCard';
 import images from '../assets/images';
@@ -8,12 +9,16 @@ const Home = () => {
   // Get featured tours
   const featuredTours = allTours.filter(tour => tour.featured);
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
       <section className="relative bg-blue-900 text-white">
         <div className="absolute inset-0 overflow-hidden">
-          <img className="w-full h-full object-cover opacity-40" src={images.zanzibarHero} alt="Zanzibar Beach" />
+          <img className="w-full h-full object-cover opacity-40" src={images.zanzibarHero} alt="Zanzibar Beach" loading="lazy" />
         </div>
         <div className="container mx-auto px-4 py-24 relative z-10">
           <div className="max-w-3xl">
@@ -24,7 +29,7 @@ const Home = () => {
                 Explore Tours
               </Link>
               <Link to="/contact" className="bg-white hover:bg-gray-100 text-blue-900 px-6 py-3 rounded-lg font-medium transition-colors duration-300">
-                Contact Us
+                Book Now
               </Link>
             </div>
           </div>

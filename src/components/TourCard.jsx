@@ -18,7 +18,7 @@ const TourCard = ({ tour }) => {
     <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="relative h-48">
         <img 
-          // src={tour.image || "/src/assets/images/tour-placeholder.jpg"} 
+          src={tour.image || "/src/assets/images/tour-placeholder.jpg"} 
           alt={tour.name} 
           className="w-full h-full object-cover"
           onError={(e) => {
@@ -28,6 +28,11 @@ const TourCard = ({ tour }) => {
         <div className="absolute top-0 right-0 bg-blue-600 text-white px-3 py-1 m-2 rounded-full text-sm font-semibold">
           {tour.category}
         </div>
+        {tour.featured && (
+          <div className="absolute top-0 left-0 bg-yellow-500 text-white px-3 py-1 m-2 rounded-full text-sm font-semibold">
+            Featured
+          </div>
+        )}
       </div>
       
       <div className="p-4">

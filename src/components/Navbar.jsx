@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Map, Info, Phone, Compass } from 'lucide-react';
+import { Home, Map, Info, Phone, Compass,CalendarCheck2 } from 'lucide-react';
+
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,13 +60,13 @@ const Navbar = () => {
                 <Map size={18} />
                 <span>Tours</span>
               </Link>
+                <Link to="/contact" className={`px-3 py-2 font-medium transition-colors duration-200 flex items-center gap-2 ${isActive('/contact')}`}>
+                <CalendarCheck2 size={18} />
+                <span>Book</span>
+              </Link>
               <Link to="/about" className={`px-3 py-2 font-medium transition-colors duration-200 flex items-center gap-2 ${isActive('/about')}`}>
                 <Info size={18} />
                 <span>About Us</span>
-              </Link>
-              <Link to="/contact" className={`px-3 py-2 font-medium transition-colors duration-200 flex items-center gap-2 ${isActive('/contact')}`}>
-                <Phone size={18} />
-                <span>Contact</span>
               </Link>
             </div>
           </div>
@@ -73,7 +75,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-blue-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-blue-500 hover:bg-gray-100 "
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
               aria-label={isMenuOpen ? 'Close main menu' : 'Open main menu'}
@@ -130,6 +132,18 @@ const Navbar = () => {
             <Map size={20} />
             <span>Tours</span>
           </Link>
+
+          <Link
+            to="/contact"
+            className={`flex items-center gap-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+              isActive('/contact') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'
+            }`}
+            aria-current={location.pathname === '/contact' ? 'page' : undefined}
+          >
+            <CalendarCheck2 size={20} />
+            <span>Book</span>
+          </Link>
+
           <Link
             to="/about"
             className={`flex items-center gap-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
@@ -139,16 +153,6 @@ const Navbar = () => {
           >
             <Info size={20} />
             <span>About Us</span>
-          </Link>
-          <Link
-            to="/contact"
-            className={`flex items-center gap-3 px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
-              isActive('/contact') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-500'
-            }`}
-            aria-current={location.pathname === '/contact' ? 'page' : undefined}
-          >
-            <Phone size={20} />
-            <span>Contact</span>
           </Link>
         </div>
       </div>
