@@ -58,12 +58,12 @@ const TourCard = ({ tour }) => {
         </p>
         
         <div className="flex justify-between items-center">
-          <div>
+          {/* <div>
             <span className="text-sm text-gray-500">From</span>
             <p className="text-blue-600 font-bold text-lg">
               ${typeof getBasePrice() === 'number' ? getBasePrice().toFixed(2) : getBasePrice()}
             </p>
-          </div>
+          </div> */}
           
           <Link
             to={`/tours/${tour.id}`}

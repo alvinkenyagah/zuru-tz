@@ -124,7 +124,7 @@ const SearchFilter = () => {
         </div>
         
         {/* Price Range */}
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <div className="flex justify-between mb-1">
             <label htmlFor="price-range" className="block text-sm font-medium text-gray-700">Price Range</label>
             <span className="text-sm text-gray-500">
@@ -159,7 +159,7 @@ const SearchFilter = () => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
         
         {/* Buttons */}
         <div className="flex space-x-4">

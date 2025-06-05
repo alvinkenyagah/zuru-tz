@@ -56,12 +56,12 @@ const TourCard = ({ tour }) => {
         </p>
         
         <div className="flex justify-between items-center">
-          <div>
+          {/* <div>
             <span className="text-sm text-gray-500">From</span>
             <p className="text-blue-600 font-bold text-lg">
               ${typeof getBasePrice() === 'number' ? getBasePrice().toFixed(2) : getBasePrice()}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
@@ -498,7 +498,7 @@ const BookingPage = () => {
             )}
 
             {/* Price Summary */}
-            {selectedTour && calculatedPrice > 0 && (
+            {/* {selectedTour && calculatedPrice > 0 && (
               <div className="bg-white rounded-lg shadow-lg p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Price Summary</h3>
                 <div className="space-y-2">
@@ -528,7 +528,7 @@ const BookingPage = () => {
                   * Final price may vary based on specific requirements and availability
                 </p>
               </div>
-            )}
+            )} */}
 
             {/* Contact Info */}
             <div className="bg-blue-50 rounded-lg p-6">
